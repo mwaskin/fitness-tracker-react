@@ -30,7 +30,7 @@ export const registerUser = async (username, password) => {
     });
     const data = await response.json();
     console.log('registerUser response: ', data)
-		return data.token;
+		return data;
     
   } catch (error) {
     console.log('Error registering user: ', error);

@@ -18,12 +18,19 @@ const Register = () => {
             return;
           }
           try {
-            console.log('Register: username: ', username, 'pw: ', password);
-            const token = await registerUser(username, password);
-            console.log('Register: token: ', token);
-            dispatch({ type: 'setToken', payload: token});
+            console.log('Register: username: ', username, 'pw: ', password);//
+
+            const data = await registerUser(username, password);
+            console.log('Register: data: ', data);//
+            
+            if (data.error) {
+              throw (data.error)
+            }
+
+            dispatch({ type: 'setToken', payload: data.token});
+
           } catch (error) {
-            console.error('Register: Error setting token for registered user: ', error)
+            console.error('Register: Error registering user: ', error)
           }
         }} 
       >
