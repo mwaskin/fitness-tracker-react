@@ -9,6 +9,7 @@ import { useForState, useStateDispatch } from './StateContext';
 import Home from './components/Home';
 import Header from './components/Header';
 import Register from './components/Register';
+import Login from './components/Login';
 //function imports
 import { fetchMe } from './api/auth';
 //style imports
@@ -40,6 +41,7 @@ function App() {
       <Routes>
         <Route path='/' element={ <Home /> } />
         <Route path='/users/register' element={<Register />} />
+        <Route path='/users/login' element={<Login />} />
       </Routes>
     </div>
   )

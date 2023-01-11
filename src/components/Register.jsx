@@ -7,7 +7,7 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [confirmPw, setConfirmPw] = useState('');
   const dispatch = useStateDispatch();
-  
+
   return(
     <div>
       <form
@@ -15,6 +15,7 @@ const Register = () => {
           event.preventDefault();
           if (confirmPw !== password) {
             console.log("Passwords do not match. User not created.");
+            window.alert("Password must match");
             return;
           }
           try {
@@ -22,17 +23,22 @@ const Register = () => {
 
             const data = await registerUser(username, password);
             console.log('Register: data: ', data);//
-            
+
             if (data.error) {
-              throw (data.error)
+
+              throw (data)
             }
 
             dispatch({ type: 'setToken', payload: data.token});
 
           } catch (error) {
+
+            window.alert(error.message);
             console.error('Register: Error registering user: ', error)
+
+
           }
-        }} 
+        }}
       >
         <label htmlFor='username'>Username: </label>
         <input type='text' value={username} placeholder="Username" onChange={(event) => setUsername(event.target.value)}/>

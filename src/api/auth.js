@@ -7,17 +7,16 @@ export const fetchMe = async (token) => {
     const response = await fetch(`${APIURL}/users/me`, {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`
-      }
+        Authorization: `Bearer ${token}`,
+      },
     });
 
     const user = await response.json();
     return user;
-
   } catch (error) {
-    console.error('Error fetching user: ', error)
+    console.error("Error fetching user: ", error);
   }
-}
+};
 
 export const registerUser = async (username, password) => {
   try {
@@ -26,33 +25,30 @@ export const registerUser = async (username, password) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, password })
+      body: JSON.stringify({ username, password }),
     });
     const data = await response.json();
-    console.log('registerUser response: ', data)
-		return data;
-    
+    console.log("registerUser response: ", data);
+    return data;
   } catch (error) {
-    console.log('Error registering user: ', error);
+    console.log("Error registering user: ", error);
   }
-}
+};
 
 export const logIn = async (username, password) => {
   try {
     const response = await fetch(`${APIURL}/users/login`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(
-        { username, password }
-      )
+      body: JSON.stringify({ username, password }),
     });
 
-    const { data: { token }} = await response.json();
+    const data = await response.json();
 
-		return token;
+    return data;
   } catch (error) {
-    console.error('Error logging in user: ', error)
+    console.error("Error logging in user: ", error);
   }
-}
+};
