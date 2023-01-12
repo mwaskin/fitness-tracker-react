@@ -30,7 +30,7 @@ function App() {
     };
 
     if(state.token) {
-      getMe();
+      getMe(); //why does this not need to be await?
     }
   }, [state.token]);
 
@@ -40,8 +40,8 @@ function App() {
 
       <Routes>
         <Route path='/' element={ <Home /> } />
-        <Route path='/users/register' element={<Register />} />
-        <Route path='/users/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/login' element={<Login />} />
       </Routes>
     </div>
   )

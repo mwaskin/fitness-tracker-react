@@ -30,7 +30,8 @@ const Register = () => {
             }
 
             dispatch({ type: 'setToken', payload: data.token});
-
+            localStorage.setItem('token', data.token)
+            
           } catch (error) {
 
             window.alert(error.message);

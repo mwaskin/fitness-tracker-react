@@ -1,4 +1,5 @@
 import { json } from "react-router-dom";
+import { useForState, useStateDispatch } from "../StateContext";
 
 const APIURL = "http://fitnesstrac-kr.herokuapp.com/api";
 
@@ -52,3 +53,13 @@ export const logIn = async (username, password) => {
     console.error("Error logging in user: ", error);
   }
 };
+
+// export const logOut = () => {
+//   const dispatch = useStateDispatch();
+//   const state = useForState();
+  
+//   localStorage.clear();
+//   dispatch({type: 'setToken', payload: ''});
+//   dispatch({type: 'setUser', payload: {}});
+//   console.log(state);
+// }
