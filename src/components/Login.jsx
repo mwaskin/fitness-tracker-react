@@ -19,7 +19,7 @@ const Login = () => {
 
                 throw (data)
         }
-        dispatch({type: 'setToken', payload: data.token});
+        dispatch({type: 'setToken', payload: data.token} );
 
                 } catch (error) {
         window.alert(error.message);
