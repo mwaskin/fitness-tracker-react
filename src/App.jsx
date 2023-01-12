@@ -10,10 +10,12 @@ import Home from './components/Home';
 import Header from './components/Header';
 import Register from './components/Register';
 import Login from './components/Login';
+import Routines from './components/Routines';
 //function imports
 import { fetchMe } from './api/auth';
 //style imports
 import './App.css'
+import { fetchPublicRoutines } from './api/routines';
 
 function App() {
   const state = useForState();
@@ -21,6 +23,7 @@ function App() {
   const dispatch = useStateDispatch();
   console.log('App: dispatch: ', dispatch)
 
+  // maybe move useEffects into StateContext
   useEffect(() => {
     const getMe = async () => {
       const userObj = await fetchMe(state.token);
@@ -30,9 +33,18 @@ function App() {
     };
 
     if(state.token) {
-      getMe();
+      getMe(); //why does this not need to be await?
     }
   }, [state.token]);
+
+  useEffect(() => {
+    const getPublicRoutines = async () => {
+      const routines = await fetchPublicRoutines();
+      dispatch({ type: 'setPublicRoutines', payload: routines })
+      console.log('getPublicRoutines: state: ', state);
+    };
+    getPublicRoutines();
+  }, []);
 
   return (
     <div className='root-container'>
@@ -40,8 +52,9 @@ function App() {
 
       <Routes>
         <Route path='/' element={ <Home /> } />
-        <Route path='/users/register' element={<Register />} />
-        <Route path='/users/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/routines' element={<Routines />} />
       </Routes>
     </div>
   )

@@ -13,6 +13,7 @@ export function StateProvider ({children}) {
 	const [state, dispatch] = useReducer(reducer, {
 		token: initToken,
 		user: {},
+		publicRoutines: [],
 	});
 
 	return(
@@ -38,6 +39,8 @@ function reducer(state, action) {
 			{return { ...state, token: action.payload};}
 		case "setUser":
 			{return { ...state, user: action.payload};}
+		case "setPublicRoutines":
+			{return { ...state, publicRoutines: action.payload};}
 		default:
 			{return state;}
 	}

@@ -14,26 +14,19 @@ const Login = () => {
              onSubmit = {async (event) => {
                 event.preventDefault();
                 try {
-                const data = await logIn(username,password);
-                if (data.error){
+                    const data = await logIn(username,password);
+                    if (data.error){
+                        throw (data)
+                    }
 
-                throw (data)
-        }
-        dispatch({type: 'setToken', payload: data.token} );
-
+                    dispatch({type: 'setToken', payload: data.token});
+                    localStorage.setItem('token', data.token)
                 } catch (error) {
-        window.alert(error.message);
-        console.error('Login: Error logging in: ', error)
-
-    }
-
-
-
+                    window.alert(error.message);
+                    console.error('Login: Error logging in: ', error)
+                }
              }}
             >
-
-
-
             <label htmlFor='username'>Username: </label>
             <input type='text' value={username} placeholder="Username" onChange={(event) =>  setUsername(event.target.value)}/>
 
@@ -41,12 +34,9 @@ const Login = () => {
             <input type='text' value={password} placeholder="Password" onChange={(event) => setPassword(event.target.value)}/>
             <input type="submit" value="Log In" />
 
-</form>
+            </form>
         </div>
     )
-
-
-
 }
 
 
