@@ -14,6 +14,8 @@ export function StateProvider ({children}) {
 		token: initToken,
 		user: {},
 		publicRoutines: [],
+		myRoutines: [],
+
 	});
 
 	return(
@@ -35,13 +37,16 @@ export function useStateDispatch() {
 
 function reducer(state, action) {
 	switch (action.type) {
-		case "setToken": 
+		case "setToken":
 			{return { ...state, token: action.payload};}
 		case "setUser":
 			{return { ...state, user: action.payload};}
 		case "setPublicRoutines":
 			{return { ...state, publicRoutines: action.payload};}
+			case "setMyRoutines":
+				{return { ...state, myRoutines: action.payload};}
 		default:
 			{return state;}
+
 	}
 };
