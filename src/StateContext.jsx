@@ -6,19 +6,18 @@ const StateDispatchContext = createContext(null);
 
 const savedToken = localStorage.getItem("token");
 
-const initToken = savedToken ? savedToken : '';
+const initToken = savedToken ? savedToken : "";
 
-export function StateProvider ({children}) {
-
+export function StateProvider({ children }) {
 	const [state, dispatch] = useReducer(reducer, {
 		token: initToken,
 		user: {},
 		publicRoutines: [],
 		myRoutines: [],
-
+		activities: [],
 	});
 
-	return(
+	return (
 		<StateContext.Provider value={state}>
 			<StateDispatchContext.Provider value={dispatch}>
 				{children}
@@ -37,16 +36,23 @@ export function useStateDispatch() {
 
 function reducer(state, action) {
 	switch (action.type) {
-		case "setToken":
-			{return { ...state, token: action.payload};}
-		case "setUser":
-			{return { ...state, user: action.payload};}
-		case "setPublicRoutines":
-			{return { ...state, publicRoutines: action.payload};}
-			case "setMyRoutines":
-				{return { ...state, myRoutines: action.payload};}
-		default:
-			{return state;}
-
+		case "setToken": {
+			return { ...state, token: action.payload };
+		}
+		case "setUser": {
+			return { ...state, user: action.payload };
+		}
+		case "setPublicRoutines": {
+			return { ...state, publicRoutines: action.payload };
+		}
+		case "setMyRoutines": {
+			return { ...state, myRoutines: action.payload };
+		}
+		case "setActivities": {
+			return { ...state, activities: action.payload };
+		}
+		default: {
+			return state;
+		}
 	}
-};
+}
