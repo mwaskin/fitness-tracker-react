@@ -48,7 +48,7 @@ const RoutineForm = () => {
 			<input
 				type="checkbox"
 				name="makePublic"
-				onChange={setIsPublic(!isPublic)}
+				onChange={() => setIsPublic(!isPublic)}
 			/>
 			<input type="submit" value="Create Routine" />
 		</form>
