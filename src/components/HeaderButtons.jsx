@@ -2,12 +2,13 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 // import { logOut } from "../api/auth";
 import { useForState, useStateDispatch } from "../StateContext";
+import "./HeaderButton.css"
 
 const HeaderButtons = () => {
-  
+
   const dispatch = useStateDispatch();
   const state = useForState();
-  
+
   return(
     <nav>
       <NavLink to='/' className={'nav-home'}>Home</NavLink>

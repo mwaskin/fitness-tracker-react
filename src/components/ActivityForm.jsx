@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { createActivity } from '../api/activities';
 import { useForState, useStateDispatch } from '../StateContext';
+import "./ActivityForm.css"
 
 const ActivityForm = () => {
   const { token, activities } = useForState();
@@ -21,26 +22,29 @@ const ActivityForm = () => {
     } catch (error) {
       console.log("Error submitting activity form: ", error);
       alert(error.message);
-
     }
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Name: </label>
-      <input
-        type="text"
-        value={name}
-        onChange={(event) => setName(event.target.value)}
-      />
-      <label>Description: </label>
-      <input
-        type="text"
-        value={description}
-        onChange={(event) => setDescription(event.target.value)}
-      />
-      <input type="submit" value="Create Activity" />
-    </form>
+    <div className="activity-form-container">
+      <form className="activity-form" onSubmit={handleSubmit}>
+        <label className="activity-form-label">Name: </label>
+        <input
+          className="activity-form-input"
+          type="text"
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+        />
+        <label className="activity-form-label">Description: </label>
+        <input
+          className="activity-form-input"
+          type="text"
+          value={description}
+          onChange={(event) => setDescription(event.target.value)}
+        />
+        <input className="activity-form-submit" type="submit" value="Create Activity" />
+      </form>
+    </div>
   );
 };
 

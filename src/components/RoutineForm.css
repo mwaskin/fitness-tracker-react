@@ -1,0 +1,37 @@
+.routine-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    padding: 16px;
+    margin: 16px;
+    width: 300px;
+    box-shadow: 0px 0px 8px #d9d9d9;
+}
+
+.routine-form-label {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+.routine-form-input {
+    font-size: 18px;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+.routine-form-submit {
+    font-size: 18px;
+    padding: 8px;
+    border-radius: 8px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    margin-top: 16px;
+    width: 100%;
+}

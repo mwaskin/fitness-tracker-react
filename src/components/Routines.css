@@ -1,0 +1,38 @@
+.routines-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 50px;
+  }
+
+  .routine-card {
+    width: 300px;
+    height: 700px;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    box-shadow: 0px 0px 10px #ccc;
+  }
+
+  .routine-name {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+
+  .routine-goal {
+    font-size: 1.2em;
+    color: #555;
+  }
+
+  .routine-creator {
+    font-size: 1.2em;
+    color: #555;
+  }
+
+  .routine-activities {
+    font-size: 1.2em;
+    color: #555;
+    margin-top: 10px;
+  }

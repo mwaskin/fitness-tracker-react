@@ -1,0 +1,38 @@
+.activity-form-container {
+    width: 50%;
+    margin: 0 auto; /* center the container on the page */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.activity-form-label {
+    width: 100%;
+    text-align: left;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.activity-form-input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: none;
+    background-color: #f2f2f2;
+    font-size: 1.2em;
+}
+
+.activity-form-submit {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
