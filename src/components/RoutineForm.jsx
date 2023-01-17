@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { createRoutine } from "../api/routines";
 import { useForState, useStateDispatch } from "../StateContext";
 
@@ -19,15 +19,16 @@ const RoutineForm = () => {
 					if (data.error) {
 						throw data;
 					}
-					dispatch({ type: "setMyRoutines", payload: [...myRoutines, data] });
+					data.activities = [];
+					dispatch({ type: "setMyRoutines", payload: [data, ...myRoutines] });
 					if (data.isPublic) {
 						dispatch({
 							type: "setPublicRoutines",
-							payload: [...publicRoutines, data],
+							payload: [data, ...publicRoutines],
 						});
 					}
-					useNavigate(`/routines/${data.id}`);
 				} catch (error) {
+					window.alert(error.message);
 					console.log("Error submitting routine form: ", error);
 				}
 			}}
@@ -48,7 +49,7 @@ const RoutineForm = () => {
 			<input
 				type="checkbox"
 				name="makePublic"
-				onChange={setIsPublic(!isPublic)}
+				onChange={() => setIsPublic(!isPublic)}
 			/>
 			<input type="submit" value="Create Routine" />
 		</form>

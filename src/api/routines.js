@@ -49,3 +49,24 @@ export const createRoutine = async (token, name, goal, isPublic) => {
 		console.error("Error creating routine: ", error);
 	}
 };
+
+export const updateRoutine = async ({ id, name, goal, isPublic }) => {
+	try {
+		const response = await fetch(`${APIURL}/routines/${id}`, {
+			method: "PATCH",
+			headers: {
+				"Content-Type": "application/json",
+				Authorization: `Bearer ${token}`,
+			},
+			body: JSON.stringify({
+				name: name,
+				goal: goal,
+				isPublic: isPublic,
+			}),
+		});
+		const routine = await response.json();
+		return routine;
+	} catch (error) {
+		console.error("Error updating routine: ", error);
+	}
+};

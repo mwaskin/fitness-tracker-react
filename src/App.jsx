@@ -12,6 +12,7 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import Routines from "./components/Routines";
 import MyRoutines from "./components/MyRoutines";
+import SingleRoutine from "./components/SingleRoutine";
 import Activities from "./components/Activities";
 //function imports
 import { fetchMe } from "./api/auth";
@@ -22,26 +23,26 @@ import { fetchAllActivities } from "./api/activities";
 
 function App() {
 	const state = useForState();
-	console.log("App: state: ", state);
+	// console.log("App: state: ", state);
 	const dispatch = useStateDispatch();
-	console.log("App: dispatch: ", dispatch);
+	// console.log("App: dispatch: ", dispatch);
 
 	// maybe move useEffects into StateContext
 	useEffect(() => {
 		const getMyRoutines = async (userObj) => {
 			const username = userObj.username;
-			console.log("USERNAME------------------->", userObj.username);
+			// console.log("USERNAME------------------->", userObj.username);
 			const token = state.token;
-			console.log("TOKEN----------------->", token);
+			// console.log("TOKEN----------------->", token);
 			const myRoutines = await fetchUserRoutines(username, token);
 			dispatch({ type: "setMyRoutines", payload: myRoutines });
 		};
 		const getMe = async () => {
 			const userObj = await fetchMe(state.token);
-			console.log("App: userObj: ", userObj);
+			// console.log("App: userObj: ", userObj);
 			dispatch({ type: "setUser", payload: userObj });
 			await getMyRoutines(userObj);
-			console.log("App: getMe: state: ", state);
+			// console.log("App: getMe: state: ", state);
 		};
 
 		if (state.token) {
@@ -53,7 +54,7 @@ function App() {
 		const getPublicRoutines = async () => {
 			const routines = await fetchPublicRoutines();
 			dispatch({ type: "setPublicRoutines", payload: routines });
-			console.log("getPublicRoutines: state: ", state);
+			// console.log("getPublicRoutines: state: ", state);
 		};
 
 		const getAllActivities = async () => {

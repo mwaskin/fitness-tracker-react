@@ -2,6 +2,7 @@ import React from "react";
 import { useForState } from "../StateContext";
 import { fetchUserRoutines } from "../api/routines";
 import RoutineForm from "./RoutineForm";
+import SingleRoutine from "./SingleRoutine";
 
 const MyRoutines = () => {
 	const state = useForState();
@@ -14,20 +15,7 @@ const MyRoutines = () => {
 			{myRoutines.map((routine) => {
 				return (
 					<div key={routine.id} className={"routine"}>
-						<h3>{routine.name}</h3>
-						<p>Goal: {routine.goal}</p>
-						<p>Created by: {routine.creatorName}</p>
-						<h4>Activities: </h4>
-						{routine.activities.map((activity) => {
-							return (
-								<div key={activity.id}>
-									<p>{activity.name}</p>
-									<p>Description: {activity.description}</p>
-									<p>Duration: {activity.duration}</p>
-									<p>Count: {activity.count}</p>
-								</div>
-							);
-						})}
+						<SingleRoutine routine={routine} />
 					</div>
 				);
 			})}
