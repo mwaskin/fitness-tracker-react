@@ -2,6 +2,7 @@ import React, { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import { createRoutine } from "../api/routines";
 import { useForState, useStateDispatch } from "../StateContext";
+import "./RoutineForm.css"
 
 const RoutineForm = () => {
 	const { token, myRoutines, publicRoutines } = useForState();
@@ -11,7 +12,7 @@ const RoutineForm = () => {
 	const [isPublic, setIsPublic] = useState(false);
 
 	return (
-		<form
+		<form className="routine-form-container routine-form"
 			onSubmit={async (event) => {
 				event.preventDefault();
 				try {
@@ -33,26 +34,27 @@ const RoutineForm = () => {
 				}
 			}}
 		>
-			<label>Name: </label>
-			<input
+			<label className="routine-form-label" >Name: </label>
+			<input className="routine-form-input"
 				type="text"
 				value={name}
 				onChange={(event) => setName(event.target.value)}
 			/>
-			<label>Goal: </label>
-			<input
+			<label className="routine-form-label">Goal: </label>
+			<input className="routine-form-input"
 				type="text"
 				value={goal}
 				onChange={(event) => setGoal(event.target.value)}
 			/>
-			<label>Make Public?: </label>
-			<input
+			<label className="routine-form-label">Make Public?: </label>
+			<input className="routine-form-input"
 				type="checkbox"
 				name="makePublic"
 				onChange={() => setIsPublic(!isPublic)}
 			/>
-			<input type="submit" value="Create Routine" />
+			<input className="routine-form-submit"  type="submit" value="Create Routine" />
 		</form>
+
 	);
 };
 

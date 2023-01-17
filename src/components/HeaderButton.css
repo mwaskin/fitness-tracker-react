@@ -1,0 +1,44 @@
+nav {
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: gray;
+    color: #fff;
+  }
+
+  nav a {
+    color: blue;
+    text-decoration: none;
+    margin-right: 10px;
+    font-weight: bold;
+  }
+
+  nav a:hover {
+    color: white;
+  }
+
+  .nav-home {
+    background-color: #4caf50;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+
+  .nav-routines {
+    background-color: #ff9800;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+
+  .nav-activities {
+    background-color: #9c27b0;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+
+  .nav-myroutines {
+    background-color: #2196f3;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
